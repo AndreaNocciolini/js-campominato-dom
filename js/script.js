@@ -15,7 +15,7 @@ let select = document.getElementById(`difficulty`);
 let numMin = 1;
 let numMax = 100;
 
-//change difficulty
+
 select.addEventListener(`change`, function(){
   start(select, numMax, numMin);
 });
@@ -23,6 +23,10 @@ select.addEventListener(`change`, function(){
 button.addEventListener(`click`, function(){
 	start(select, numMax, numMin);
 })
+
+function getRndInteger(min, max) {
+  return Math.floor(Math.random() * (max - min) ) + min;
+}
 
 function start(selectDiff, maxNum, minNum){
 	let container = document.querySelector(`.container`);
@@ -46,7 +50,7 @@ function start(selectDiff, maxNum, minNum){
   
   for(let i = minNum; i <= numCells; i++){
   	let square = document.createElement(`div`);
-    let numRand = Math.floor(Math.random() * numCells);
+    let numRand = getRndInteger(i, numCells);
     square.classList.add(`square`);
     
     square.style.height = `calc(100% / ${rowsCells})`;
