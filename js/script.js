@@ -46,13 +46,19 @@ function start(selectDiff, maxNum, minNum){
   
   for(let i = minNum; i <= numCells; i++){
   	let square = document.createElement(`div`);
+    let numRand = Math.floor(Math.random() * numCells);
     square.classList.add(`square`);
     
     square.style.height = `calc(100% / ${rowsCells})`;
     square.style.width = `calc(100% / ${rowsCells})`;
 
     square.addEventListener(`click`, function(){
-    	this.style.backgroundColor = `blue`;
+    	if(i !== numRand){
+      	this.style.backgroundColor = `blue`;
+      }
+    	else if (i == numRand){
+      	this.style.backgroundColor = `red`;
+      }
     })
     
     square.innerHTML = i;
